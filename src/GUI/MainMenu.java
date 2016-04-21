@@ -86,12 +86,16 @@ public class MainMenu extends JFrame {
 		comboBox1.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
+				from = Length.values()[comboBox1.getSelectedIndex()];
+				to = Length.values()[comboBox2.getSelectedIndex()];
 				lock = false;
 			}
 		});
 		comboBox2.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
+				from = Length.values()[comboBox1.getSelectedIndex()];
+				to = Length.values()[comboBox2.getSelectedIndex()];
 				lock = false;
 			}
 		});
@@ -100,14 +104,11 @@ public class MainMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				from = Length.values()[comboBox1.getSelectedIndex()];
-				to = Length.values()[comboBox2.getSelectedIndex()];
-
 				if (!lock) {
 					if (switchField == TEXTFIELD1) {
-						textField2.setText(String.format("%.10f", uc.convert(amount, from, to)));
+						textField2.setText(String.valueOf(uc.convert(amount, from, to)));
 					} else {
-						textField1.setText(String.format("%.10f", uc.convert(amount, to, from)));
+						textField1.setText(String.valueOf(uc.convert(amount, to, from)));
 					}
 				}
 				lock = true;
@@ -159,9 +160,8 @@ public class MainMenu extends JFrame {
 			char aChar = input.charAt(i);
 			Boolean checkNumber = false;
 
-			if (aChar == '.' && !checkDot) {
-				checkDot = true;
-			} else if (aChar == '.' && checkDot) return false;
+			if (aChar == '.' && !checkDot) checkDot = true;
+			else if (aChar == '.') return false;
 
 			for (Character exceptChar : except) {
 				if (aChar == exceptChar) {
