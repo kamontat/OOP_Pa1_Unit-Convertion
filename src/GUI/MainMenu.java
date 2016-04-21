@@ -105,9 +105,9 @@ public class MainMenu extends JFrame {
 
 				if (!lock) {
 					if (switchField == TEXTFIELD1) {
-						textField2.setText(String.format("%.2f", uc.convert(amount, from, to)));
+						textField2.setText(String.format("%.10f", uc.convert(amount, from, to)));
 					} else {
-						textField1.setText(String.format("%.2f", uc.convert(amount, to, from)));
+						textField1.setText(String.format("%.10f", uc.convert(amount, to, from)));
 					}
 				}
 				lock = true;
@@ -129,6 +129,9 @@ public class MainMenu extends JFrame {
 		// check String must be number.
 		if (isAllNumberIn(field.getText())) {
 			convertButton.setEnabled(true);
+
+			// case user enter dot in first time
+			if (field.getText().equals(".")) return Float.parseFloat(field.getText() + 0);
 			return Float.parseFloat(field.getText());
 		} else {
 			convertButton.setEnabled(false);
@@ -151,6 +154,7 @@ public class MainMenu extends JFrame {
 		Boolean checkDot = false;
 
 		Character[] except = new Character[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'};
+
 		for (int i = 0; i < input.length(); i++) {
 			char aChar = input.charAt(i);
 			Boolean checkNumber = false;
@@ -172,7 +176,7 @@ public class MainMenu extends JFrame {
 
 	public void run() {
 		pack();
-		setSize(625, 65);
+		setSize(800, 65);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
