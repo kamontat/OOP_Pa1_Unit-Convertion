@@ -82,27 +82,28 @@ public class MainMenu extends JFrame {
 			}
 		});
 
-		// unlock converting when user choose comboBox
 		comboBox1.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				from = Length.values()[comboBox1.getSelectedIndex()];
-				to = Length.values()[comboBox2.getSelectedIndex()];
-				lock = false;
+				amount = warningIn(textField1);
+				switchField = TEXTFIELD1;
 			}
 		});
+
 		comboBox2.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				from = Length.values()[comboBox1.getSelectedIndex()];
-				to = Length.values()[comboBox2.getSelectedIndex()];
-				lock = false;
+				amount = warningIn(textField2);
+				switchField = TEXTFIELD2;
 			}
 		});
 
 		convertButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
+				from = Length.values()[comboBox1.getSelectedIndex()];
+				to = Length.values()[comboBox2.getSelectedIndex()];
 
 				if (!lock) {
 					if (switchField == TEXTFIELD1) {
