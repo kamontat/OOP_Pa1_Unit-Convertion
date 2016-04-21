@@ -45,21 +45,18 @@ public class MainMenu extends JFrame {
 		textField1.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void insertUpdate(DocumentEvent e) {
-				lock = false;
 				amount = warningIn(textField1);
 				switchField = TEXTFIELD1;
 			}
 
 			@Override
 			public void removeUpdate(DocumentEvent e) {
-				lock = false;
 				amount = warningIn(textField1);
 				switchField = TEXTFIELD1;
 			}
 
 			@Override
 			public void changedUpdate(DocumentEvent e) {
-				lock = false;
 				amount = warningIn(textField1);
 				switchField = TEXTFIELD1;
 			}
@@ -68,26 +65,24 @@ public class MainMenu extends JFrame {
 		textField2.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void insertUpdate(DocumentEvent e) {
-				lock = false;
 				amount = warningIn(textField2);
 				switchField = TEXTFIELD2;
 			}
 
 			@Override
 			public void removeUpdate(DocumentEvent e) {
-				lock = false;
 				amount = warningIn(textField2);
 				switchField = TEXTFIELD2;
 			}
 
 			@Override
 			public void changedUpdate(DocumentEvent e) {
-				lock = false;
 				amount = warningIn(textField2);
 				switchField = TEXTFIELD2;
 			}
 		});
 
+		// unlock converting when user choose comboBox
 		comboBox1.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
@@ -129,9 +124,12 @@ public class MainMenu extends JFrame {
 	}
 
 	private double warningIn(JTextField field) {
+		// unlock converting.
+		lock = false;
+		// check String must be number.
 		if (isAllNumberIn(field.getText())) {
 			convertButton.setEnabled(true);
-			return Double.parseDouble(field.getText());
+			return Float.parseFloat(field.getText());
 		} else {
 			convertButton.setEnabled(false);
 		}
@@ -143,6 +141,7 @@ public class MainMenu extends JFrame {
 		for (int i = 0; i < Length.values().length; i++) {
 			comboBox.addItem(Length.values()[i].getName());
 		}
+
 	}
 
 	private Boolean isAllNumberIn(String input) {
@@ -157,7 +156,6 @@ public class MainMenu extends JFrame {
 			Boolean checkNumber = false;
 
 			if (aChar == '.' && !checkDot) {
-				System.out.println("");
 				checkDot = true;
 			} else if (aChar == '.' && checkDot) return false;
 
