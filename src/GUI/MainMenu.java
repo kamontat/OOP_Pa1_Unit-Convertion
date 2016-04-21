@@ -121,6 +121,8 @@ public class MainMenu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				textField1.setText("");
 				textField2.setText("");
+				comboBox1.setSelectedIndex(0);
+				comboBox2.setSelectedIndex(0);
 			}
 		});
 	}
@@ -177,7 +179,7 @@ public class MainMenu extends JFrame {
 
 	public void run() {
 		pack();
-		setSize(800, 65);
+		setSize(750, 85);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
