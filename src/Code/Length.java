@@ -5,6 +5,9 @@ package Code;
  */
 public enum Length {
 	METER("Meter", 1),
+	INCH("Inch", 0.0254),
+	FOOT("Foot", 0.3048),
+	YARD("Yard", 0.9147),
 	WA("Wa", 2);
 
 	private final String name;

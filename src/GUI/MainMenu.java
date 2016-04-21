@@ -52,24 +52,34 @@ public class MainMenu extends JFrame {
 		textField2.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void insertUpdate(DocumentEvent e) {
-				amount = warningIn(textField2);
+				//				amount = warningIn(textField2);
 			}
 
 			@Override
 			public void removeUpdate(DocumentEvent e) {
-				amount = warningIn(textField2);
+				//				amount = warningIn(textField2);
 			}
 
 			@Override
 			public void changedUpdate(DocumentEvent e) {
-				amount = warningIn(textField2);
+				//				amount = warningIn(textField2);
 			}
 		});
 
 		convertButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Length from = Length.values()[comboBox1.getSelectedIndex()];
+				Length to = Length.values()[comboBox2.getSelectedIndex()];
+				textField2.setText(String.format("%.2f", uc.convert(amount, from, to)));
+			}
+		});
 
+		clearButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				textField1.setText("");
+				textField2.setText("");
 			}
 		});
 
@@ -87,12 +97,6 @@ public class MainMenu extends JFrame {
 
 
 	private void addUnit(JComboBox<String> comboBox) {
-		for (int i = 0; i < Length.values().length; i++) {
-			comboBox.addItem(Length.values()[i].getName());
-		}
-	}
-
-	private void getUnit(JComboBox<String> comboBox) {
 		for (int i = 0; i < Length.values().length; i++) {
 			comboBox.addItem(Length.values()[i].getName());
 		}

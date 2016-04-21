@@ -9,7 +9,7 @@ public class UnitConverter {
 	}
 
 	public double convert(double amount, Length from, Length to) {
-		return (amount / from.getValue()) * to.getValue();
+		return (amount / to.getValue()) * from.getValue();
 	}
 
 	public void getUnit() {
