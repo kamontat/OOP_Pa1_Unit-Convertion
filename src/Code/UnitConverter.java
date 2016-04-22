@@ -8,13 +8,13 @@ public class UnitConverter {
 	public UnitConverter() {
 	}
 
-	public double convert(double amount, Length from, Length to) {
+	public double convert(double amount, LengthUnit from, LengthUnit to) {
 		return (amount / to.getValue()) * from.getValue();
 	}
 
 	public void getUnit() {
-		for (int i = 0; i < Length.values().length; i++) {
-			System.out.print(Length.values()[i].getName() + " ");
+		for (int i = 0; i < LengthUnit.values().length; i++) {
+			System.out.print(LengthUnit.values()[i].getName() + " ");
 		}
 		System.out.println();
 	}

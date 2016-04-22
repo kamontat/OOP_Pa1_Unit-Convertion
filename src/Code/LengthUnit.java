@@ -3,7 +3,7 @@ package Code;
 /**
  * Created by kamontat on 21/4/59.
  */
-public enum Length {
+public enum LengthUnit {
 	METER("Meter", 1),
 
 	// metric
@@ -32,7 +32,7 @@ public enum Length {
 	private final String name;
 	private final double value;
 
-	private Length(String n, double v) {
+	private LengthUnit(String n, double v) {
 		this.name = n;
 		this.value = v;
 	}

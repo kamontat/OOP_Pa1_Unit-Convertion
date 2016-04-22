@@ -1,6 +1,6 @@
 package GUI;
 
-import Code.Length;
+import Code.LengthUnit;
 import Code.UnitConverter;
 
 import javax.swing.*;
@@ -28,8 +28,8 @@ public class MainMenu extends JFrame {
 	private JButton clearButton;
 
 	private double amount;
-	private Length from;
-	private Length to;
+	private LengthUnit from;
+	private LengthUnit to;
 	private Boolean lock = false;
 	private int switchField;
 
@@ -45,56 +45,48 @@ public class MainMenu extends JFrame {
 		textField1.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void insertUpdate(DocumentEvent e) {
-				amount = warningIn(textField1);
-				switchField = TEXTFIELD1;
+				changeAmount(TEXTFIELD1);
 			}
 
 			@Override
 			public void removeUpdate(DocumentEvent e) {
-				amount = warningIn(textField1);
-				switchField = TEXTFIELD1;
+				changeAmount(TEXTFIELD1);
 			}
 
 			@Override
 			public void changedUpdate(DocumentEvent e) {
-				amount = warningIn(textField1);
-				switchField = TEXTFIELD1;
+				changeAmount(TEXTFIELD1);
 			}
 		});
 
 		textField2.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void insertUpdate(DocumentEvent e) {
-				amount = warningIn(textField2);
-				switchField = TEXTFIELD2;
+				changeAmount(TEXTFIELD2);
 			}
 
 			@Override
 			public void removeUpdate(DocumentEvent e) {
-				amount = warningIn(textField2);
-				switchField = TEXTFIELD2;
+				changeAmount(TEXTFIELD2);
 			}
 
 			@Override
 			public void changedUpdate(DocumentEvent e) {
-				amount = warningIn(textField2);
-				switchField = TEXTFIELD2;
+				changeAmount(TEXTFIELD2);
 			}
 		});
 
 		comboBox1.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				amount = warningIn(textField1);
-				switchField = TEXTFIELD1;
+				changeAmount(TEXTFIELD1);
 			}
 		});
 
 		comboBox2.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				amount = warningIn(textField2);
-				switchField = TEXTFIELD2;
+				changeAmount(TEXTFIELD2);
 			}
 		});
 
@@ -102,8 +94,8 @@ public class MainMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				from = Length.values()[comboBox1.getSelectedIndex()];
-				to = Length.values()[comboBox2.getSelectedIndex()];
+				from = LengthUnit.values()[comboBox1.getSelectedIndex()];
+				to = LengthUnit.values()[comboBox2.getSelectedIndex()];
 
 				if (!lock) {
 					if (switchField == TEXTFIELD1) {
@@ -127,6 +119,16 @@ public class MainMenu extends JFrame {
 		});
 	}
 
+	private void changeAmount(int textField) {
+		if (textField == TEXTFIELD1) {
+			amount = warningIn(textField1);
+			switchField = TEXTFIELD1;
+		} else if (textField == TEXTFIELD2) {
+			amount = warningIn(textField2);
+			switchField = TEXTFIELD2;
+		}
+	}
+
 	private double warningIn(JTextField field) {
 		// unlock converting.
 		lock = false;
@@ -143,10 +145,9 @@ public class MainMenu extends JFrame {
 		return 0;
 	}
 
-
 	private void addUnit(JComboBox<String> comboBox) {
-		for (int i = 0; i < Length.values().length; i++) {
-			comboBox.addItem(Length.values()[i].getName());
+		for (int i = 0; i < LengthUnit.values().length; i++) {
+			comboBox.addItem(LengthUnit.values()[i].getName());
 		}
 
 	}
