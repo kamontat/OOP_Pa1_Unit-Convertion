@@ -21,9 +21,9 @@ public enum Length {
 	INCH("Inch", 0.0254),
 
 	// thai unit
-	WA("Wa", 2),
 	YOT("Yot", 16000),
 	SEN("Sen", 40),
+	WA("Wa", 2),
 	SOK("Sok", 0.5),
 	KHUEP("Khuep", 0.25),
 	NIO("Nio", 0.02083);
