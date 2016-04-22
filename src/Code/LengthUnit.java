@@ -1,6 +1,12 @@
 package Code;
 
 /**
+ * the collection of length unit. <br>
+ * this has 3 different kind of length <br>
+ * 1) Metric <br>
+ * 2) American System of Measures <br>
+ * 3) Thai unit <br>
+ * <p>
  * Created by kamontat on 21/4/59.
  */
 public enum LengthUnit {
@@ -28,10 +34,12 @@ public enum LengthUnit {
 	KHUEP("Khuep", 0.25),
 	NIO("Nio", 0.02083);
 
-
+	// name of unit length
 	private final String name;
+	// compare 1 unit to ??? meter
 	private final double value;
 
+	// constructor
 	private LengthUnit(String n, double v) {
 		this.name = n;
 		this.value = v;
@@ -43,9 +51,5 @@ public enum LengthUnit {
 
 	public double getValue() {
 		return this.value;
-	}
-
-	public String toString() {
-		return "name=" + name + ", value=" + value;
 	}
 }

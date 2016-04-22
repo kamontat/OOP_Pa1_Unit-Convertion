@@ -15,9 +15,10 @@ import java.awt.event.ItemListener;
  * Created by kamontat on 21/4/59.
  */
 public class MainMenu extends JFrame {
+	// constant variable
 	private final int TEXTFIELD1 = 1;
 	private final int TEXTFIELD2 = 2;
-
+	// UI in Jframe
 	private JTextField textField1;
 	private JPanel panel1;
 	private JComboBox<String> comboBox1;
@@ -26,22 +27,27 @@ public class MainMenu extends JFrame {
 	private JComboBox<String> comboBox2;
 	private JButton convertButton;
 	private JButton clearButton;
-
+	// special variable
 	private double amount;
 	private LengthUnit from;
 	private LengthUnit to;
+	// lock convertion if user convert it alrealy
 	private Boolean lock = false;
+	// last textField that user press on
 	private int switchField;
 
+	// constructor
 	public MainMenu() {
 		UnitConverter uc = new UnitConverter();
 		setContentPane(panel1);
 
+		// make convert unable in first run program
 		convertButton.setEnabled(false);
 
 		addUnit(comboBox1);
 		addUnit(comboBox2);
 
+		// run in every alphabet that user insert or remove from text field
 		textField1.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void insertUpdate(DocumentEvent e) {
@@ -58,7 +64,6 @@ public class MainMenu extends JFrame {
 				changeAmount(TEXTFIELD1);
 			}
 		});
-
 		textField2.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void insertUpdate(DocumentEvent e) {
@@ -76,13 +81,13 @@ public class MainMenu extends JFrame {
 			}
 		});
 
+		// run in every changing that user change in combo box
 		comboBox1.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				changeAmount(TEXTFIELD1);
 			}
 		});
-
 		comboBox2.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
@@ -119,6 +124,12 @@ public class MainMenu extends JFrame {
 		});
 	}
 
+	/**
+	 * Change amount and Switch field that user input in last time.
+	 *
+	 * @param textField
+	 * 		which textField that user input in last time
+	 */
 	private void changeAmount(int textField) {
 		if (textField == TEXTFIELD1) {
 			amount = warningIn(textField1);
@@ -129,6 +140,14 @@ public class MainMenu extends JFrame {
 		}
 	}
 
+	/**
+	 * warning if user input alphabet that can't be convert to number
+	 * if user input number correctly it will make <i>Convert button</i> enabled and return that number; <br>otherwise, <i>Convert button</i> unable and return 0
+	 *
+	 * @param field
+	 * 		check warning in <code>field</code>
+	 * @return the number(type: <b>float</b>) in field
+	 */
 	private double warningIn(JTextField field) {
 		// unlock converting.
 		lock = false;
@@ -145,6 +164,11 @@ public class MainMenu extends JFrame {
 		return 0;
 	}
 
+	/**
+	 * add Length Unit in combo box
+	 *
+	 * @param comboBox
+	 */
 	private void addUnit(JComboBox<String> comboBox) {
 		for (int i = 0; i < LengthUnit.values().length; i++) {
 			comboBox.addItem(LengthUnit.values()[i].getName());
@@ -152,6 +176,13 @@ public class MainMenu extends JFrame {
 
 	}
 
+	/**
+	 * check that all input String is number or can parse it to number.
+	 *
+	 * @param input
+	 * 		String want to check
+	 * @return true if it all the number; otherwise, return false
+	 */
 	private Boolean isAllNumberIn(String input) {
 		// if input is emply String
 		if (input.length() == 0) return false;
@@ -178,6 +209,9 @@ public class MainMenu extends JFrame {
 		return true;
 	}
 
+	/**
+	 * to run this GUI
+	 */
 	public void run() {
 		pack();
 		setSize(750, 85);
