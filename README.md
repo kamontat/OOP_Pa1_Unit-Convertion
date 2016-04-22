@@ -4,8 +4,13 @@ This is my converter unit program in lab of OOP2
 
 ### What is this repository for? ###
 
-* Learn how to use GUI in java 
+* Learn how to use GUI in java
 * Pratice enum class
+
+### How to install is this program? ###
+1. Go to folder **out/artifacts/UnitConverter_jar**
+2. Double click on **UnitConverter.jar** file
+
 
 ### Who done this project? ###
 
