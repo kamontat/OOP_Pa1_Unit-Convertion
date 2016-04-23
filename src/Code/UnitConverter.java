@@ -25,14 +25,4 @@ public class UnitConverter {
 	public double convert(double amount, Unit from, Unit to) {
 		return (amount / to.getValue()) * from.getValue();
 	}
-
-	/**
-	 * print out all unit that program had.
-	 */
-	public void getUnit() {
-		for (int i = 0; i < LengthUnit.values().length; i++) {
-			System.out.print(LengthUnit.values()[i].getName() + " ");
-		}
-		System.out.println();
-	}
 }
