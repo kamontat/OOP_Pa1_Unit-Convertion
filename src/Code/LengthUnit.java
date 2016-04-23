@@ -47,7 +47,6 @@ public enum LengthUnit implements Unit {
 		this.value = v;
 	}
 
-
 	@Override
 	public String getName() {
 		return this.name;

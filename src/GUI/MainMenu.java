@@ -260,11 +260,9 @@ public class MainMenu extends JFrame {
 		chooseUnit(length);
 		chooseUnit(weight);
 
-
 		unit.add(length);
 		unit.add(weight);
 		menu.add(unit);
-
 
 		setMenuBar(menu);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
