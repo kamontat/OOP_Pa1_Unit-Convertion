@@ -40,7 +40,7 @@ public enum WeightUnit implements Unit {
 	private final double value;
 
 	// constructor
-	private WeightUnit(String name, double value) {
+	WeightUnit(String name, double value) {
 		this.name = name;
 		this.value = value;
 	}

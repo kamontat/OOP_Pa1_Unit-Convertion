@@ -2,6 +2,7 @@ package Code;
 
 /**
  * Interface of all Unit convert in this program
+ * <p>
  * Created by kamontat on 23/4/59.
  */
 public interface Unit {
@@ -10,12 +11,12 @@ public interface Unit {
 	 *
 	 * @return name of Unit
 	 */
-	public String getName();
+	String getName();
 
 	/**
 	 * get <i>value</i> of the Unit compare with <i>default Unit</i> and return back
 	 *
 	 * @return value of Unit
 	 */
-	public double getValue();
+	double getValue();
 }

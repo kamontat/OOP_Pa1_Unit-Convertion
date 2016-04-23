@@ -42,7 +42,7 @@ public enum LengthUnit implements Unit {
 	private final double value;
 
 	// constructor
-	private LengthUnit(String n, double v) {
+	LengthUnit(String n, double v) {
 		this.name = n;
 		this.value = v;
 	}
