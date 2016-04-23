@@ -22,7 +22,7 @@ public class UnitConverter {
 	 * 		Unit that user want to <b>convert to</b>
 	 * @return the amount number in <code>to</code> Unit
 	 */
-	public double convert(double amount, LengthUnit from, LengthUnit to) {
+	public double convert(double amount, Unit from, Unit to) {
 		return (amount / to.getValue()) * from.getValue();
 	}
 
