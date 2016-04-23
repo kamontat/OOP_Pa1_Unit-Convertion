@@ -1,7 +1,8 @@
 package Code;
 
 /**
- * the collection of length unit. <br>
+ * The collection of length unit. <br>
+ * Default unit is M(Meter) <br>
  * this has 3 different kind of length <br>
  * 1) Metric <br>
  * 2) American System of Measures <br>
@@ -9,7 +10,7 @@ package Code;
  * <p>
  * Created by kamontat on 21/4/59.
  */
-public enum LengthUnit {
+public enum LengthUnit implements Unit {
 	METER("Meter", 1),
 
 	// metric
@@ -45,10 +46,13 @@ public enum LengthUnit {
 		this.value = v;
 	}
 
+
+	@Override
 	public String getName() {
 		return this.name;
 	}
 
+	@Override
 	public double getValue() {
 		return this.value;
 	}
