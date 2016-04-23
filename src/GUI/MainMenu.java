@@ -31,8 +31,6 @@ public class MainMenu extends JFrame {
 	private double amount;
 	private LengthUnit from;
 	private LengthUnit to;
-	// lock convertion if user convert it alrealy
-	private Boolean lock = false;
 	// last textField that user press on
 	private int switchField;
 
@@ -102,20 +100,18 @@ public class MainMenu extends JFrame {
 				from = LengthUnit.values()[comboBox1.getSelectedIndex()];
 				to = LengthUnit.values()[comboBox2.getSelectedIndex()];
 
-				if (!lock) {
-					if (switchField == TEXTFIELD1) {
-						textField2.setText(String.valueOf(uc.convert(amount, from, to)));
-					} else {
-						textField1.setText(String.valueOf(uc.convert(amount, to, from)));
-					}
+				if (switchField == TEXTFIELD1) {
+					textField2.setText(String.format("%.2g", uc.convert(amount, from, to)));
+				} else {
+					textField1.setText(String.format("%.2g", uc.convert(amount, to, from)));
 				}
-				lock = true;
 			}
 		});
 
 		clearButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				textField1.setText("");
 				textField2.setText("");
 				comboBox1.setSelectedIndex(0);
@@ -125,7 +121,9 @@ public class MainMenu extends JFrame {
 	}
 
 	/**
-	 * Change amount and Switch field that user input in last time.
+	 * Change amount and Switch field that user input in last time. <br>
+	 * <p>
+	 * <i>if <b>lock</b> is true, program won't do this method</i>
 	 *
 	 * @param textField
 	 * 		which textField that user input in last time
@@ -149,8 +147,6 @@ public class MainMenu extends JFrame {
 	 * @return the number(type: <b>float</b>) in field
 	 */
 	private double warningIn(JTextField field) {
-		// unlock converting.
-		lock = false;
 		// check String must be number.
 		if (isAllNumberIn(field.getText())) {
 			convertButton.setEnabled(true);
@@ -168,6 +164,7 @@ public class MainMenu extends JFrame {
 	 * add Length Unit in combo box
 	 *
 	 * @param comboBox
+	 * 		display length unit
 	 */
 	private void addUnit(JComboBox<String> comboBox) {
 		for (int i = 0; i < LengthUnit.values().length; i++) {
@@ -216,7 +213,7 @@ public class MainMenu extends JFrame {
 		pack();
 		setSize(750, 85);
 		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
