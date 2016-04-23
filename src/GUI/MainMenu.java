@@ -1,11 +1,14 @@
 package GUI;
 
 import Code.LengthUnit;
+import Code.Unit;
 import Code.UnitConverter;
+import Code.WeightUnit;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -29,8 +32,8 @@ public class MainMenu extends JFrame {
 	private JButton clearButton;
 	// special variable
 	private double amount;
-	private LengthUnit from;
-	private LengthUnit to;
+	private Unit from;
+	private Unit to;
 	// last textField that user press on
 	private int switchField;
 
@@ -41,9 +44,8 @@ public class MainMenu extends JFrame {
 
 		// make convert unable in first run program
 		convertButton.setEnabled(false);
-
-		addUnit(comboBox1);
-		addUnit(comboBox2);
+		// set default unit is Length
+		addUnit("length");
 
 		// run in every alphabet that user insert or remove from text field
 		textField1.getDocument().addDocumentListener(new DocumentListener() {
@@ -111,11 +113,7 @@ public class MainMenu extends JFrame {
 		clearButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				textField1.setText("");
-				textField2.setText("");
-				comboBox1.setSelectedIndex(0);
-				comboBox2.setSelectedIndex(0);
+				clear();
 			}
 		});
 	}
@@ -161,16 +159,43 @@ public class MainMenu extends JFrame {
 	}
 
 	/**
-	 * add Length Unit in combo box
+	 * add <code>unit</code> Unit in all comboBox
 	 *
-	 * @param comboBox
-	 * 		display length unit
+	 * @param unit
+	 * 		which unit that want to add
 	 */
-	private void addUnit(JComboBox<String> comboBox) {
-		for (int i = 0; i < LengthUnit.values().length; i++) {
-			comboBox.addItem(LengthUnit.values()[i].getName());
+	private void addUnit(String unit) {
+		comboBox1.removeAllItems();
+		comboBox2.removeAllItems();
+
+		Unit[] units = null;
+
+		if (unit.equalsIgnoreCase("length")) {
+			units = LengthUnit.values();
+		} else if (unit.equalsIgnoreCase("weight")) {
+			units = WeightUnit.values();
 		}
 
+		for (Unit aUnit : units) {
+			comboBox1.addItem(aUnit.getName());
+			comboBox2.addItem(aUnit.getName());
+		}
+	}
+
+	/**
+	 * if item be choose, program will change coombo box to that unit
+	 *
+	 * @param item
+	 * 		check item be choice or not
+	 */
+	private void chooseUnit(MenuItem item) {
+		item.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clear();
+				addUnit(item.getLabel());
+			}
+		});
 	}
 
 	/**
@@ -207,12 +232,41 @@ public class MainMenu extends JFrame {
 	}
 
 	/**
+	 * clear all of textField and set comboBox to the first element
+	 */
+	private void clear() {
+		textField1.setText("");
+		textField2.setText("");
+		comboBox1.setSelectedIndex(0);
+		comboBox2.setSelectedIndex(0);
+	}
+
+	/**
 	 * to run this GUI
 	 */
 	public void run() {
 		pack();
 		setSize(750, 85);
 		setVisible(true);
+
+		MenuBar menu = new MenuBar();
+		Menu unit = new Menu("Unit");
+
+		// add unit choice
+		MenuItem length = new MenuItem("Length");
+		MenuItem weight = new MenuItem("Weight");
+
+		// if user choose some unit
+		chooseUnit(length);
+		chooseUnit(weight);
+
+
+		unit.add(length);
+		unit.add(weight);
+		menu.add(unit);
+
+
+		setMenuBar(menu);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 
