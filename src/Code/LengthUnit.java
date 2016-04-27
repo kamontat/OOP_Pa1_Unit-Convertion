@@ -2,7 +2,7 @@ package Code;
 
 /**
  * The collection of <b>Length</b> unit. <br>
- * Default unit is M(Meter) <br>
+ * Default unit is Meter(m) <br>
  * <p>
  * This has 3 different kind of Length <br>
  * 1) Metric <br>

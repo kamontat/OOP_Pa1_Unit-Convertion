@@ -2,7 +2,7 @@ package Code;
 
 /**
  * The collection of <b>Weight</b> unit. <br>
- * Default unit is KG(Kilogram) <br>
+ * Default unit is Kilogram(kg) <br>
  * <p>
  * This has 3 different kind of Weight <br>
  * 1) Metric <br>

@@ -1,6 +1,9 @@
 package Code;
 
 /**
+ * The collection of <b>Pressure</b> unit. <br>
+ * Default unit is Pascal(kPa) <br>
+ * <p>
  * Created by kamontat on 27/4/59.
  */
 public enum PressureUnit implements Unit {
@@ -9,23 +12,12 @@ public enum PressureUnit implements Unit {
 	// Metric
 	BAR("Bar", Math.pow(10, 5)),
 	KILOPASCAL("Kilopascal (kPa)", 1000),
-	// FIXME: 27/4/59 change unit to pressure
-	GRAM("Gram (g)", 0.001),
-	CARAT("Carat (ct)", 0.0002),
+	KGPERSQM("Kilogram / Meter² (kgf/m²)", 9.807),
+	NPERSQM("Newton / Meter² (N/m²)", 1),
+	TPERSQM("Tonne / Meter²", 9807),
 
-	// Avoirdupois
-	STONE("Stone", 6.35),
-	POUND("Pound (lb)", 0.4536),
-	OUNCE("Ounce (oz)", 0.02835),
-	GRAIN("Grain (gr)", 6.48 * Math.pow(10, -5)),
-
-	// Thai unit
-	HAP("หาบ (Hap)", 60.98),
-	CHANG("ชั่ง (Chang)", 1.22),
-	TAMLUENG("ตำลึง (Tamlueng)", 6.098 * Math.pow(10, -2)),
-	BAHT("บาท (baht)", 1.5 * Math.pow(10, -2)),
-	SALUENG("สลึง (Salueng)", 3.811 * Math.pow(10, -3)),
-	ATH("อัฐ (Ath)", 2.382 * Math.pow(10, -4));
+	// Atmosphere
+	ATMOSPHERE("Atmosphere (atm)", 101300);
 
 	// name or description of unit pressure
 	private final String name;
