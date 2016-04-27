@@ -108,9 +108,9 @@ public class MainMenu extends JFrame {
 				Unit to = units[comboBox2.getSelectedIndex()];
 
 				if (switchField == TEXTFIELD1) {
-					textField2.setText(String.format("%.2g", uc.convert(amount, from, to)));
+					textField2.setText(String.format("%.5g", uc.convert(amount, from, to)));
 				} else {
-					textField1.setText(String.format("%.2g", uc.convert(amount, to, from)));
+					textField1.setText(String.format("%.5g", uc.convert(amount, to, from)));
 				}
 			}
 		});
