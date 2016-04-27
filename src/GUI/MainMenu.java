@@ -22,6 +22,7 @@ public class MainMenu extends JFrame {
 	// constant variable
 	private final int TEXTFIELD1 = 1;
 	private final int TEXTFIELD2 = 2;
+
 	// UI in Jframe
 	private JTextField textField1;
 	private JPanel panel1;
@@ -31,6 +32,9 @@ public class MainMenu extends JFrame {
 	private JComboBox<String> comboBox2;
 	private JButton convertButton;
 	private JButton clearButton;
+
+	// current unit
+	private Unit[] units;
 	// special variable
 	private double amount;
 	// last textField that user press on
@@ -100,8 +104,8 @@ public class MainMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				Unit from = LengthUnit.values()[comboBox1.getSelectedIndex()];
-				Unit to = LengthUnit.values()[comboBox2.getSelectedIndex()];
+				Unit from = units[comboBox1.getSelectedIndex()];
+				Unit to = units[comboBox2.getSelectedIndex()];
 
 				if (switchField == TEXTFIELD1) {
 					textField2.setText(String.format("%.2g", uc.convert(amount, from, to)));
@@ -169,8 +173,6 @@ public class MainMenu extends JFrame {
 	private void addUnit(String unit) {
 		comboBox1.removeAllItems();
 		comboBox2.removeAllItems();
-
-		Unit[] units = null;
 
 		if (unit.equalsIgnoreCase("length")) {
 			units = LengthUnit.values();
@@ -243,6 +245,9 @@ public class MainMenu extends JFrame {
 		comboBox2.setSelectedIndex(0);
 	}
 
+	/**
+	 * create new menu bar with unit item inside it.
+	 */
 	private void createMenuBar() {
 		JMenuBar menu = new JMenuBar();
 		JMenu unit = new JMenu("Unit");
