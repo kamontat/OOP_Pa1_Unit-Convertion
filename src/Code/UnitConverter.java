@@ -1,5 +1,7 @@
 package Code;
 
+import UnitFactory.Unit;
+
 /**
  * Object to convert some unit to other unit.
  * <p>
