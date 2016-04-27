@@ -285,7 +285,7 @@ public class MainMenu extends JFrame {
 	 */
 	public void run() {
 		pack();
-		setSize(750, 100);
+		setSize(750, 135);
 		setVisible(true);
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
