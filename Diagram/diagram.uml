@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="1590.25" y="0.0">Code.UnitConverter</node>
+    <node x="466.0" y="268.0">UnitFactory.PressureUnit</node>
+    <node x="717.75" y="0.5">UnitFactory.Unit</node>
+    <node x="1235.0" y="125.0">GUI.MainMenu</node>
+    <node x="754.0" y="158.0">UnitFactory.LengthUnit</node>
+    <node x="0.0" y="180.0">UnitFactory.WeightUnit</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="GUI.MainMenu" target="UnitFactory.Unit">
+      <point x="-147.25" y="-269.0" />
+      <point x="1382.25" y="95.0" />
+      <point x="848.125" y="95.0" />
+      <point x="55.875" y="37.0" />
+    </edge>
+    <edge source="GUI.MainMenu" target="Code.UnitConverter">
+      <point x="147.25" y="-269.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="UnitFactory.PressureUnit" target="UnitFactory.Unit">
+      <point x="0.0" y="-126.0" />
+      <point x="600.0" y="105.0" />
+      <point x="773.625" y="105.0" />
+      <point x="-18.625" y="37.0" />
+    </edge>
+    <edge source="UnitFactory.WeightUnit" target="UnitFactory.Unit">
+      <point x="0.0" y="-214.0" />
+      <point x="223.0" y="95.0" />
+      <point x="736.375" y="95.0" />
+      <point x="-55.875" y="37.0" />
+    </edge>
+    <edge source="UnitFactory.LengthUnit" target="UnitFactory.Unit">
+      <point x="0.0" y="-236.0" />
+      <point x="984.5" y="105.0" />
+      <point x="810.875" y="105.0" />
+      <point x="18.625" y="37.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5254880694143167" x="912.0" y="252.0557275541796" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>Production</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
