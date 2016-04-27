@@ -192,8 +192,8 @@ public class MainMenu extends JFrame {
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				clear();
 				addUnit(item.getLabel());
+				clear();
 			}
 		});
 	}
@@ -255,7 +255,7 @@ public class MainMenu extends JFrame {
 		// add unit choice
 		MenuItem length = new MenuItem("Length");
 		MenuItem weight = new MenuItem("Weight");
-
+		
 		// if user choose some unit
 		chooseUnit(length);
 		chooseUnit(weight);
