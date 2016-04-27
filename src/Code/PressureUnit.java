@@ -12,9 +12,9 @@ public enum PressureUnit implements Unit {
 	// Metric
 	BAR("Bar", Math.pow(10, 5)),
 	KILOPASCAL("Kilopascal (kPa)", 1000),
-	KGPERSQM("Kilogram / Meter² (kgf/m²)", 9.807),
-	NPERSQM("Newton / Meter² (N/m²)", 1),
-	TPERSQM("Tonne / Meter²", 9807),
+	KGPERSQM("Kilogram/Meter² (kgf/m²)", 9.807),
+	NPERSQM("Newton/Meter² (N/m²)", 1),
+	TPERSQM("Tonne/Meter²", 9807),
 
 	// Atmosphere
 	ATMOSPHERE("Atmosphere (atm)", 101300);

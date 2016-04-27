@@ -1,9 +1,6 @@
 package GUI;
 
-import Code.LengthUnit;
-import Code.Unit;
-import Code.UnitConverter;
-import Code.WeightUnit;
+import Code.*;
 import com.sun.java.swing.action.ExitAction;
 
 import javax.swing.*;
@@ -178,6 +175,8 @@ public class MainMenu extends JFrame {
 			units = LengthUnit.values();
 		} else if (unit.equalsIgnoreCase("weight")) {
 			units = WeightUnit.values();
+		} else if (unit.equalsIgnoreCase("pressure")) {
+			units = PressureUnit.values();
 		}
 
 		for (Unit aUnit : units) {
@@ -255,6 +254,7 @@ public class MainMenu extends JFrame {
 		// add unit choice
 		JMenuItem length = new JMenuItem("Length");
 		JMenuItem weight = new JMenuItem("Weight");
+		JMenuItem pressure = new JMenuItem("Pressure");
 
 		// exit action
 		ExitAction exit = new ExitAction();
@@ -268,9 +268,12 @@ public class MainMenu extends JFrame {
 		// if user choose some unit
 		chooseUnit(length);
 		chooseUnit(weight);
+		chooseUnit(pressure);
 
 		unit.add(length);
 		unit.add(weight);
+		unit.add(pressure);
+		/* exit action */
 		unit.add(exit);
 
 		menu.add(unit);
