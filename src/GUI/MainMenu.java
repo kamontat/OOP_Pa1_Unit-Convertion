@@ -4,6 +4,7 @@ import Code.LengthUnit;
 import Code.Unit;
 import Code.UnitConverter;
 import Code.WeightUnit;
+import com.sun.java.swing.action.ExitAction;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -32,8 +33,6 @@ public class MainMenu extends JFrame {
 	private JButton clearButton;
 	// special variable
 	private double amount;
-	private Unit from;
-	private Unit to;
 	// last textField that user press on
 	private int switchField;
 
@@ -41,6 +40,8 @@ public class MainMenu extends JFrame {
 	public MainMenu() {
 		UnitConverter uc = new UnitConverter();
 		setContentPane(panel1);
+
+		createMenuBar();
 
 		// make convert unable in first run program
 		convertButton.setEnabled(false);
@@ -99,8 +100,8 @@ public class MainMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				from = LengthUnit.values()[comboBox1.getSelectedIndex()];
-				to = LengthUnit.values()[comboBox2.getSelectedIndex()];
+				Unit from = LengthUnit.values()[comboBox1.getSelectedIndex()];
+				Unit to = LengthUnit.values()[comboBox2.getSelectedIndex()];
 
 				if (switchField == TEXTFIELD1) {
 					textField2.setText(String.format("%.2g", uc.convert(amount, from, to)));
@@ -150,7 +151,8 @@ public class MainMenu extends JFrame {
 			convertButton.setEnabled(true);
 
 			// case user enter dot in first time
-			if (field.getText().equals(".")) return Float.parseFloat(field.getText() + 0);
+			if (field.getText().equals(".")) return .0;
+
 			return Float.parseFloat(field.getText());
 		} else {
 			convertButton.setEnabled(false);
@@ -188,11 +190,11 @@ public class MainMenu extends JFrame {
 	 * @param item
 	 * 		check item be choice or not
 	 */
-	private void chooseUnit(MenuItem item) {
+	private void chooseUnit(JMenuItem item) {
 		item.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				addUnit(item.getLabel());
+				addUnit(item.getText());
 				clear();
 			}
 		});
@@ -216,7 +218,7 @@ public class MainMenu extends JFrame {
 		for (int i = 0; i < input.length(); i++) {
 			char aChar = input.charAt(i);
 			Boolean checkNumber = false;
-
+			// check dot must have only one dot
 			if (aChar == '.' && !checkDot) checkDot = true;
 			else if (aChar == '.') return false;
 
@@ -225,7 +227,7 @@ public class MainMenu extends JFrame {
 					checkNumber = true;
 				}
 			}
-
+			// break loop even input have only one alphabet
 			if (!checkNumber) return false;
 		}
 		return true;
@@ -241,30 +243,43 @@ public class MainMenu extends JFrame {
 		comboBox2.setSelectedIndex(0);
 	}
 
-	/**
-	 * to run this GUI
-	 */
-	public void run() {
-		pack();
-		setSize(750, 85);
-		setVisible(true);
-
-		MenuBar menu = new MenuBar();
-		Menu unit = new Menu("Unit");
+	private void createMenuBar() {
+		JMenuBar menu = new JMenuBar();
+		JMenu unit = new JMenu("Unit");
 
 		// add unit choice
-		MenuItem length = new MenuItem("Length");
-		MenuItem weight = new MenuItem("Weight");
-		
+		JMenuItem length = new JMenuItem("Length");
+		JMenuItem weight = new JMenuItem("Weight");
+
+		// exit action
+		ExitAction exit = new ExitAction();
+		exit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+
 		// if user choose some unit
 		chooseUnit(length);
 		chooseUnit(weight);
 
 		unit.add(length);
 		unit.add(weight);
-		menu.add(unit);
+		unit.add(exit);
 
-		setMenuBar(menu);
+		menu.add(unit);
+		setJMenuBar(menu);
+	}
+
+	/**
+	 * to run this GUI
+	 */
+	public void run() {
+		pack();
+		setSize(750, 100);
+		setVisible(true);
+
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 
