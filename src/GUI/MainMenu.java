@@ -1,10 +1,7 @@
 package GUI;
 
 import Code.*;
-import UnitFactory.LengthUnit;
-import UnitFactory.PressureUnit;
-import UnitFactory.Unit;
-import UnitFactory.WeightUnit;
+import UnitFactory.*;
 import com.sun.java.swing.action.ExitAction;
 
 import javax.swing.*;
@@ -180,6 +177,8 @@ public class MainMenu extends JFrame {
 			units = WeightUnit.values();
 		} else if (unit.equalsIgnoreCase("pressure")) {
 			units = PressureUnit.values();
+		} else if (unit.equalsIgnoreCase("area")) {
+			units = AreaUnit.values();
 		}
 
 		for (Unit aUnit : units) {
@@ -258,6 +257,7 @@ public class MainMenu extends JFrame {
 		JMenuItem length = new JMenuItem("Length");
 		JMenuItem weight = new JMenuItem("Weight");
 		JMenuItem pressure = new JMenuItem("Pressure");
+		JMenuItem area = new JMenuItem("Area");
 
 		// exit action
 		ExitAction exit = new ExitAction();
@@ -272,10 +272,12 @@ public class MainMenu extends JFrame {
 		chooseUnit(length);
 		chooseUnit(weight);
 		chooseUnit(pressure);
+		chooseUnit(area);
 
 		unit.add(length);
 		unit.add(weight);
 		unit.add(pressure);
+		unit.add(area);
 		/* exit action */
 		unit.add(exit);
 
