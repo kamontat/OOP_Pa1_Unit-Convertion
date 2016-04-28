@@ -24,7 +24,6 @@ public class MainMenu extends JFrame {
 	private JTextField textField1;
 	private JPanel panel1;
 	private JComboBox<String> comboBox1;
-	private JLabel message;
 	private JTextField textField2;
 	private JComboBox<String> comboBox2;
 	private JButton convertButton;

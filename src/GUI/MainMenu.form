@@ -14,7 +14,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="992cb" class="javax.swing.JLabel" binding="message">
+      <component id="992cb" class="javax.swing.JLabel">
         <constraints>
           <grid row="1" column="2" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
