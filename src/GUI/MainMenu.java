@@ -7,6 +7,7 @@ import com.sun.java.swing.action.ExitAction;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -148,13 +149,18 @@ public class MainMenu extends JFrame {
 	private double warningIn(JTextField field) {
 		// check String must be number.
 		if (isAllNumberIn(field.getText())) {
+			// set color
+			field.setForeground(new Color(0, 0, 0));
+			// set enable button
 			convertButton.setEnabled(true);
-
 			// case user enter dot in first time
 			if (field.getText().equals(".")) return .0;
 
 			return Float.parseFloat(field.getText());
 		} else {
+			// set color
+			field.setForeground(new Color(255, 0, 0));
+			// set enable button
 			convertButton.setEnabled(false);
 		}
 		return 0;
