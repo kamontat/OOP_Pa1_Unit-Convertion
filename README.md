@@ -5,8 +5,7 @@ This is my converter unit program in lab of OOP2
 ### What is this repository for? ###
 
 * Learn how to use GUI in java
-* Pratice enum, interface, inherit class
-* Many kind of listener (such as keyboard, document, action etc.)
+* Pratice enum, inherit class
 
 ### How to install is this program? ###
 1. Go to folder **dist/**
