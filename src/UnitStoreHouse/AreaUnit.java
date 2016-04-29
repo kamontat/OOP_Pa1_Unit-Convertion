@@ -1,4 +1,4 @@
-package UnitFactory;
+package UnitStoreHouse;
 
 /**
  * The collection of <b>Area</b> unit. <br>

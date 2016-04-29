@@ -1,6 +1,6 @@
 package Code;
 
-import UnitFactory.Unit;
+import UnitStoreHouse.Unit;
 
 /**
  * Object to convert some unit to other unit.

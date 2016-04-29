@@ -1,7 +1,7 @@
 package GUI;
 
 import Code.*;
-import UnitFactory.*;
+import UnitStoreHouse.*;
 import com.sun.java.swing.action.ExitAction;
 
 import javax.swing.*;
