@@ -1,6 +1,7 @@
 package GUI;
 
 import Code.*;
+import Constant.UnitType;
 import UnitStoreHouse.*;
 import com.sun.java.swing.action.ExitAction;
 
@@ -47,7 +48,7 @@ public class MainMenu extends JFrame {
 		// make convert unable in first run program
 		convertButton.setEnabled(false);
 		// set default unit is Length
-		addUnit("length");
+		addUnit("Length");
 
 		// run in every alphabet that user insert or remove from text field
 		textField1.getDocument().addDocumentListener(new DocumentListener() {
@@ -176,16 +177,14 @@ public class MainMenu extends JFrame {
 		comboBox1.removeAllItems();
 		comboBox2.removeAllItems();
 
-		if (unit.equalsIgnoreCase("length")) {
-			units = LengthUnit.values();
-		} else if (unit.equalsIgnoreCase("weight")) {
-			units = WeightUnit.values();
-		} else if (unit.equalsIgnoreCase("pressure")) {
-			units = PressureUnit.values();
-		} else if (unit.equalsIgnoreCase("area")) {
-			units = AreaUnit.values();
+		// find unit type in UnitType and return Units[]
+		for (UnitType type : UnitType.values()) {
+			if (unit.equals(type.getName())) {
+				units = type.getUnits();
+			}
 		}
 
+		// add units to comboBox
 		for (Unit aUnit : units) {
 			comboBox1.addItem(aUnit.getName());
 			comboBox2.addItem(aUnit.getName());
@@ -256,13 +255,12 @@ public class MainMenu extends JFrame {
 	 */
 	private void createMenuBar() {
 		JMenuBar menu = new JMenuBar();
-		JMenu unit = new JMenu("Unit");
+		JMenu units = new JMenu("Unit");
 
 		// add unit choice
-		JMenuItem length = new JMenuItem("Length");
-		JMenuItem weight = new JMenuItem("Weight");
-		JMenuItem pressure = new JMenuItem("Pressure");
-		JMenuItem area = new JMenuItem("Area");
+		for (UnitType type : UnitType.values()) {
+			units.add(addJMenuItem(type.getName()));
+		}
 
 		// exit action
 		ExitAction exit = new ExitAction();
@@ -272,22 +270,26 @@ public class MainMenu extends JFrame {
 				System.exit(0);
 			}
 		});
-
-		// if user choose some unit
-		chooseUnit(length);
-		chooseUnit(weight);
-		chooseUnit(pressure);
-		chooseUnit(area);
-
-		unit.add(length);
-		unit.add(weight);
-		unit.add(pressure);
-		unit.add(area);
 		/* exit action */
-		unit.add(exit);
+		units.add(exit);
 
-		menu.add(unit);
+		menu.add(units);
 		setJMenuBar(menu);
+	}
+
+	/**
+	 * create JMenuItem and addActionListener in JmenuItem
+	 *
+	 * @param name
+	 * 		name of JMenuItem
+	 * @return the finish JMenuItem
+	 */
+	private JMenuItem addJMenuItem(String name) {
+		// create JMenuItem
+		JMenuItem item = new JMenuItem(name);
+		// add actionListener
+		chooseUnit(item);
+		return item;
 	}
 
 	/**
@@ -297,13 +299,11 @@ public class MainMenu extends JFrame {
 		pack();
 		setSize(750, 135);
 		setVisible(true);
-
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
 		MainMenu dialog = new MainMenu();
 		dialog.run();
-
 	}
 }

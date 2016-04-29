@@ -9,9 +9,10 @@ import UnitStoreHouse.Unit;
  * Created by kamontat on 29/4/59.
  */
 public class UnitFactory {
-	private static UnitFactory unitFactory = new UnitFactory();
+	private static UnitFactory unitFactory;
 	
 	public static UnitFactory getInstance() {
+		if (unitFactory == null) unitFactory = new UnitFactory();
 		return unitFactory;
 	}
 	
