@@ -3,7 +3,6 @@ package com.kamontat.gui;
 import com.kamontat.code.constant.*;
 import com.kamontat.code.controller.*;
 import com.kamontat.code.unithouse.*;
-import com.sun.java.swing.action.ExitAction;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -262,7 +261,7 @@ public class UIConvertMenu extends JFrame {
 		}
 
 		// exit action
-		ExitAction exit = new ExitAction();
+		JMenuItem exit = new JMenuItem();
 		exit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
