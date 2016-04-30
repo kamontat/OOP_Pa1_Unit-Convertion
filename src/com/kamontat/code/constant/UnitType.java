@@ -1,6 +1,5 @@
 package com.kamontat.code.constant;
 
-import UnitStoreHouse.*;
 import com.kamontat.code.unithouse.*;
 
 /**
@@ -21,7 +20,7 @@ public enum UnitType {
 	private Unit[] units;
 
 	// constructor
-	private UnitType(String name, Unit[] units) {
+	UnitType(String name, Unit[] units) {
 		this.name = name;
 		this.units = units;
 	}
