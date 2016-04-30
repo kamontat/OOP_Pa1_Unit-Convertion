@@ -1,7 +1,7 @@
-package Code;
+package com.kamontat.code.controller;
 
-import Constant.UnitType;
-import UnitStoreHouse.Unit;
+import com.kamontat.code.constant.UnitType;
+import com.kamontat.code.unithouse.Unit;
 
 /**
  * this is singleton of Unit factory

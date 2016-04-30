@@ -1,6 +1,6 @@
-package Code;
+package com.kamontat.code.controller;
 
-import UnitStoreHouse.Unit;
+import com.kamontat.code.unithouse.Unit;
 
 /**
  * Object to convert some unit to other unit.

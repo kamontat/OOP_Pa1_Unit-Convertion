@@ -1,8 +1,8 @@
-package GUI;
+package com.kamontat.gui;
 
-import Code.*;
-import Constant.UnitType;
-import UnitStoreHouse.*;
+import com.kamontat.code.constant.*;
+import com.kamontat.code.controller.*;
+import com.kamontat.code.unithouse.*;
 import com.sun.java.swing.action.ExitAction;
 
 import javax.swing.*;
@@ -39,8 +39,7 @@ public class UIConvertMenu extends JFrame {
 	private int switchField;
 
 	// constructor
-	public UIConvertMenu() {
-		UnitConverter uc = new UnitConverter();
+	public UIConvertMenu(UnitConverter uc) {
 		setContentPane(panel1);
 
 		createMenuBar();

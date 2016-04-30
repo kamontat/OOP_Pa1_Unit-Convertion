@@ -1,6 +1,7 @@
-package Constant;
+package com.kamontat.code.constant;
 
 import UnitStoreHouse.*;
+import com.kamontat.code.unithouse.*;
 
 /**
  * all unit category in the program
