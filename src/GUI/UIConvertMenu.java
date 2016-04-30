@@ -17,7 +17,7 @@ import java.awt.event.ItemListener;
 /**
  * Created by kamontat on 21/4/59.
  */
-public class MainMenu extends JFrame {
+public class UIConvertMenu extends JFrame {
 	// constant variable
 	private final int TEXTFIELD1 = 1;
 	private final int TEXTFIELD2 = 2;
@@ -39,7 +39,7 @@ public class MainMenu extends JFrame {
 	private int switchField;
 
 	// constructor
-	public MainMenu() {
+	public UIConvertMenu() {
 		UnitConverter uc = new UnitConverter();
 		setContentPane(panel1);
 
@@ -300,10 +300,5 @@ public class MainMenu extends JFrame {
 		setSize(750, 135);
 		setVisible(true);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-	}
-
-	public static void main(String[] args) {
-		MainMenu dialog = new MainMenu();
-		dialog.run();
 	}
 }
