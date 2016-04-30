@@ -12,6 +12,7 @@ public enum UnitType {
 	AREA("Area", AreaUnit.values()),
 	LENGTH("Length", LengthUnit.values()),
 	PRESSURE("Pressure", PressureUnit.values()),
+	SPEED("Speed", SpeedUnit.values()),
 	WEIGHT("Weight", WeightUnit.values());
 
 	// name of this unit category
