@@ -261,7 +261,7 @@ public class UIConvertMenu extends JFrame {
 		}
 
 		// exit action
-		JMenuItem exit = new JMenuItem();
+		JMenuItem exit = new JMenuItem("Exit");
 		exit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
