@@ -1,5 +1,6 @@
 package com.kamontat.code.controller;
 
+import com.kamontat.code.constant.UnitType;
 import com.kamontat.code.unithouse.Unit;
 
 /**
@@ -8,6 +9,7 @@ import com.kamontat.code.unithouse.Unit;
  * Created by kamontat on 21/4/59.
  */
 public class UnitConverter {
+	UnitFactory factory = UnitFactory.getInstance();
 
 	// constructor
 	public UnitConverter() {
@@ -26,5 +28,25 @@ public class UnitConverter {
 	 */
 	public double convert(double amount, Unit from, Unit to) {
 		return (amount / to.getValue()) * from.getValue();
+	}
+
+	/**
+	 * get all unitType
+	 *
+	 * @return Unit type in array
+	 */
+	public UnitType[] getUnitTypes() {
+		return factory.getUnitTypes();
+	}
+
+	/**
+	 * get all unit in unitType
+	 *
+	 * @param type
+	 * 		wanted type
+	 * @return all unit in the type
+	 */
+	public Unit[] getUnits(UnitType type) {
+		return factory.getUnits(type);
 	}
 }

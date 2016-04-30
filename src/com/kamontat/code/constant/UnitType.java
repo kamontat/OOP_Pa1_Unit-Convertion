@@ -13,6 +13,7 @@ public enum UnitType {
 	LENGTH("Length", LengthUnit.values()),
 	PRESSURE("Pressure", PressureUnit.values()),
 	SPEED("Speed", SpeedUnit.values()),
+	VOLUME("Volume", VolumeUnit.values()),
 	WEIGHT("Weight", WeightUnit.values());
 
 	// name of this unit category
