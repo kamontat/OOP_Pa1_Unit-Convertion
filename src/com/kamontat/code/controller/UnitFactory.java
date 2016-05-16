@@ -12,7 +12,7 @@ public class UnitFactory {
 
 	private static UnitFactory unitFactory;
 
-	public static UnitFactory getInstance() {
+	private static UnitFactory getInstance() {
 		if (unitFactory == null) unitFactory = new UnitFactory();
 		return unitFactory;
 	}
